@@ -1,0 +1,11 @@
+--- gcc1/libgcc/Makefile.in.old	2023-04-15 07:53:41.976183924 +1000
++++ gcc1/libgcc/Makefile.in	2023-04-17 19:03:22.000144645 +1000
+@@ -20,7 +20,7 @@
+ #
+ 
+ libgcc_topdir = @libgcc_topdir@
+-host_subdir = @host_subdir@
++host_subdir = host-x86_64-pc-linux-gnu
+ 
+ gcc_objdir = $(MULTIBUILDTOP)../../$(host_subdir)/gcc
+ 

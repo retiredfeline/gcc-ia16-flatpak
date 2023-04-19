@@ -1,0 +1,141 @@
+{
+  "app-id": "io.github.gcc_ia16.Gcc_ia16",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "22.08",
+  "sdk": "org.freedesktop.Sdk",
+  "command": "ia16-elf-gcc",
+  "modules": [
+    {
+      "name": "binutils",
+      "buildsystem": "autotools",
+      "config-opts": [
+        "--target=ia16-elf",
+        "--enable-ld=default",
+        "--enable-gold-yes",
+        "--enable-targets=ia16-elf",
+        "--enable-x86-hpa-segelf=yes",
+        "--disable-werror",
+        "--disable-libctf",
+        "--disable-gdb",
+        "--disable-libdecnumber",
+        "--disable-readline",
+        "--disable-sim",
+        "--disable-nls"
+      ],
+      "no-autogen": true,
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://launchpad.net/~tkchia/+archive/ubuntu/build-ia16/+sourcefiles/binutils-ia16-elf/2.39-20230319.15-ppa230319153~jammy/binutils-ia16-elf_2.39-20230319.15.orig.tar.xz",
+          "sha256": "13048b65aba9b467bfc36a73e268dcc8f44b9b5528af48b7f83ee62d8b652b9c"
+        }
+      ]
+    },
+    {
+      "name": "gmp",
+      "buildsystem": "autotools",
+      "no-autogen": true,
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://gmplib.org/download/gmp/gmp-6.1.2.tar.bz2",
+          "sha256": "5275bb04f4863a13516b2f39392ac5e272f5e1bb8057b18aec1c9b79d73d8fb2"
+        }
+      ]
+    },
+    {
+      "name": "mpfr",
+      "buildsystem": "autotools",
+      "no-autogen": true,
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftp.gnu.org/gnu/mpfr/mpfr-3.1.5.tar.bz2",
+          "sha256": "ca498c1c7a74dd37a576f353312d1e68d490978de4395fa28f1cbd46a364e658"
+        }
+      ]
+    },
+    {
+      "name": "mpc",
+      "buildsystem": "autotools",
+      "no-autogen": true,
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://ftp.gnu.org/gnu/mpc/mpc-1.0.3.tar.gz",
+          "sha256": "617decc6ea09889fb08ede330917a00b16809b8db88c29c31bfbb49cbf88ecc3"
+        }
+      ]
+    },
+    {
+      "name": "isl",
+      "buildsystem": "autotools",
+      "no-autogen": true,
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://gcc.gnu.org/pub/gcc/infrastructure/isl-0.16.1.tar.bz2",
+          "sha256": "412538bb65c799ac98e17e8cfcdacbb257a57362acfaaff254b0fcae970126d2"
+        }
+      ]
+    },
+    {
+      "name": "gcc1",
+      "buildsystem": "autotools",
+      "config-opts": [
+        "--target=ia16-elf",
+        "--without-headers",
+        "--with-newlib",
+        "--enable-languages=c",
+        "--disable-libssp",
+        "--disable-libquadmath",
+        "--disable-libstdcxx"
+        ],
+      "no-autogen": true,
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://launchpad.net/~tkchia/+archive/ubuntu/build-ia16/+sourcefiles/gcc-ia16-elf/6.3.0-20230219.07-ppa230219074~jammy/gcc-ia16-elf_6.3.0-20230219.07.orig.tar.xz",
+          "sha256": "a8db1ea5603ed7d1c832ee452f3d7fa1093e00aa194146b6b15db55b830d3d15"
+        },
+        {
+          "type": "patch",
+          "path": "gcc-ia16-Makefile-in.patch"
+        }
+      ]
+    },
+    {
+      "name": "libnewlib",
+      "buildsystem": "autotools",
+      "config-opts": [
+        "--target=ia16-elf",
+        "--enable-newlib-elix-level=2",
+        "--disable-elks-libc",
+        "--disable-freestanding",
+        "--disable-newlib-wide-orient",
+        "--enable-newlib-nano-malloc",
+        "--disable-newlib-multithread",
+        "--enable-newlib-global-atexit",
+        "--enable-newlib-reent-small",
+        "--disable-newlib-fseek-optimization",
+        "--disable-newlib-unbuf-stream-opt",
+        "--enable-target-optspace",
+        "--enable-newlib-io-c99-formats",
+        "--enable-newlib-mb",
+        "--enable-newlib-iconv",
+        "--enable-newlib-iconv-encodings=utf_8,utf_16,cp850,cp852,koi8_uni"
+      ],
+      "no-autogen": true,
+      "build-options": {
+        "cflags": "-g -Os -D_IEEE_LIBM"
+      },
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://launchpad.net/~tkchia/+archive/ubuntu/build-ia16/+sourcefiles/libnewlib-ia16-elf/2.4.0-20230316.17-stage1gcc6.3.0-20230311.22-binutils2.39-20221221.21-ppa230316171~jammy/libnewlib-ia16-elf_2.4.0-20230316.17-stage1gcc6.3.0-20230311.22-binutils2.39-20221221.21.orig.tar.xz",
+          "sha256": "3177a1c4ab7b0952158a8adc2025973c7a5b56f5465247e0cdf1a4c3dc8706dc"
+        }
+      ]
+    }
+  ]
+}

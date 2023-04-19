@@ -4,6 +4,9 @@
   "runtime-version": "22.08",
   "sdk": "org.freedesktop.Sdk",
   "command": "ia16-elf-gcc",
+  "finish-args": [
+    "--filesystem=home"
+  ],
   "modules": [
     {
       "name": "binutils",
